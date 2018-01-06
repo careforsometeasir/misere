@@ -2,7 +2,7 @@ var canvas = document.querySelector('.game');
 var ctx = canvas.getContext('2d');
 var width = canvas.width;
 var height = canvas.height = width;
-var grid = width/60;
+var grid = width/60; //Width of grid lines
 var s = grid/2;
 var third = width/3;
 var tThird = third*2;
@@ -13,7 +13,6 @@ var player = 1;
 var finished = false;
 var endCardDrawn = false;
 var board = [["", "", ""], ["", "", ""], ["", "", ""]];
-
 var playerOne = new Image();
 var playerTwo = new Image();
 var replay = new Image();
@@ -29,7 +28,7 @@ function getMousePos(canvas, evt) {
 	};
 }
 function place(x, y, i, b){
-	var n = width*(3/80);
+	var n = width*(3/80); //I'm not sure where I got this ratio from, but when I first made this and all the values were static (Width, height = 600) then 22.5 looked good and I can't remember where I got it from
 
 	if (x < sSmall && y < sSmall && b[0][0] != "x"){
 		ctx.drawImage(i, n, n, size, size);
