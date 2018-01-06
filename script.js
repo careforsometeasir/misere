@@ -30,7 +30,7 @@ function getMousePos(canvas, evt) {
 }
 function place(x, y, i, b){
 	var n = width*(3/80);
-	
+
 	if (x < sSmall && y < sSmall && b[0][0] != "x"){
 		ctx.drawImage(i, n, n, size, size);
 		b[0][0]="x";
@@ -123,11 +123,11 @@ function endCard(){
 	ctx.fillRect(0,0,width,height);
 	if (player == 1){
 		ctx.fillStyle = 'rgb(61, 28, 255)';
-		textWidth = ctx.measureText('Player 1 won').width; 
+		textWidth = ctx.measureText('Player 1 won').width;
 		ctx.fillText('Player 1 won', (width/2)-(textWidth/2), third);
 	} else {
 		ctx.fillStyle = 'rgb(255, 25, 25)';
-		textWidth = ctx.measureText('Player 2 won').width; 
+		textWidth = ctx.measureText('Player 2 won').width;
 		console.log(textWidth);
 		ctx.fillText('Player 2 won', (width/2)-(textWidth/2), third);
 	}
@@ -135,6 +135,7 @@ function endCard(){
 	ctx.drawImage(replay, (width/2)-40, (width/2)-40, 80, 80);
 }
 function start(){
+	player = 1;
 	board = [["", "", ""], ["", "", ""], ["", "", ""]];
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = 'rgb(20, 20, 20)';
