@@ -80,7 +80,7 @@ canvas.addEventListener("click", function(event){
 			place(pos.x, pos.y, playerTwo, board);
 		}
 	}
-	finished = checkIfLose(board)
+	finished = checkIfLose(board);
 	if (finished){
 		if (!endCardDrawn){
 			endCard();
