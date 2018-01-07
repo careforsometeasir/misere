@@ -7,16 +7,6 @@ body {
   margin: auto;
   height: 90%;
 }
-.text {
-  width: 50%;
-  float: left;
-  height: inherit;
-}
-.content {
-  margin-left: 20%;
-  padding-left: 10%;
-  height: inherit;
-}
 h1 {
   font-size: 2em;
 }
@@ -30,4 +20,42 @@ p {
   font-size: 2em;
   color: red;
   font-weight: bold;
+}
+@media screen and (min-width:905px) {
+  .game {
+    width: 400px;
+    height: 400px;
+  }
+  .text {
+    width: 50%;
+    float: left;
+    height: inherit;
+  }
+  .content {
+    margin-left: 20%;
+    padding-left: 10%;
+    height: inherit;
+  }
+}
+@media screen and (max-width:905px) and (min-width: 500px){
+  .game {
+    width: 400px;
+    height: 400px;
+  }
+  .text{
+    width: 100%;
+  }
+  .content {
+    margin: auto;
+    width: 400px;
+  }
+}
+@media screen and (max-width:500px){
+  .game {
+    width: 100%;
+    margin: auto;
+  }
+  .text{
+    width: 100%;
+  }
 }
