@@ -9,17 +9,23 @@ var tThird = third*2;
 var size = width/4;
 var sSmall = third - s;
 var sBig = third + s;
-var player = 1;
-var finished = false;
-var endCardDrawn = false;
-var board = [["", "", ""], ["", "", ""], ["", "", ""]];
+//These variables are given values in start()
+var player;
+var finished;
+var endCardDrawn;
+var board; //This is where the board is stored
+//Loading up images
 var playerOne = new Image();
 var playerTwo = new Image();
 var replay = new Image();
 playerOne.src = 'bluex.svg';
 playerTwo.src = 'redx.svg';
 replay.src = 'replay.svg';
+
+//call the start function
 start();
+
+//function to get mouse coordinates on canvas
 function getMousePos(canvas, evt) {
 	var rect = canvas.getBoundingClientRect();
 	return {
@@ -27,6 +33,8 @@ function getMousePos(canvas, evt) {
 	  y: evt.clientY - rect.top
 	};
 }
+
+//really overcomplicated function to determine which cell has been clicked
 function place(x, y, i, b){
 	var n = width*(3/80); //I'm not sure where I got this ratio from, but when I first made this and all the values were static (Width, height = 600) then 22.5 looked good and I can't remember where I got it from
 
@@ -68,6 +76,7 @@ function place(x, y, i, b){
 		switchPlayer();
 	}
 }
+//here is where everything happens
 canvas.addEventListener("click", function(event){
 	var pos = getMousePos(canvas, event);
 	//console.log(player)
@@ -89,25 +98,33 @@ canvas.addEventListener("click", function(event){
 		}
 	}
 });
+
+//this function looks at the board and checks to see if there are any 3 in a rows
 function checkIfLose(board){
 	for (i=0; i < 3; i++){
-		console.log(i);
-		console.log(board[i]);
+		//console.log(i);
+		//console.log(board[i]);
+		//Check for horizontal sets
 		if (board[i][0]=="x" && board[i][1]=="x" && board[i][2]=="x"){
 			return true;
+		//Check for vertical sets
 		}else if (board[0][i]=="x" && board[1][i]=="x" && board[2][i]=="x"){
 			return true;
 		}
 	}
+	//Check if there is an x in the middle, checking for diagonal sets
 	if (board[1][1]=="x"){
+		//check for top left to bottom right set
 		if (board[0][0]=="x" && board[2][2]=="x"){
 			return true;
 		}
+		//check for top right to bottom left set
 		if (board[0][2]=="x" && board[2][0]=="x"){
 			return true;
 		}
 	}
 }
+//function switches player
 function switchPlayer(){
 	if (player == 1){
 		player = 2;
@@ -115,6 +132,7 @@ function switchPlayer(){
 		player=1;
 	}
 }
+//function draws the end/replay screen
 function endCard(){
 	ctx.font = '45px Open Sans';
 	var textWidth;
@@ -133,8 +151,10 @@ function endCard(){
 	endCardDrawn=true;
 	ctx.drawImage(replay, (width/2)-40, (width/2)-40, 80, 80);
 }
+//the start function draws the grid and sets the starting variables
 function start(){
 	player = 1;
+	//empty board
 	board = [["", "", ""], ["", "", ""], ["", "", ""]];
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = 'rgb(20, 20, 20)';
