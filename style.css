@@ -26,3 +26,8 @@ h2 {
 p {
   font-size: 1em;
 }
+#oops {
+  font-size: 2em;
+  color: red;
+  font-weight: bold;
+}
